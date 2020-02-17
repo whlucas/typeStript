@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    // 这里的东西只会影响我写代码的时候,但他最后还是会编译成上面配置的es5,让浏览器去兼容
+    "lib": [
+      "dom",
+      "dom.iterable", // 这个选项是为了让你拿到的doms变成迭代器,让他可以用for of循环
+      "esnext" // 这个是比es2016还要新的es版本
+    ],
+    "downlevelIteration": true, // 这个选项是为了用for of迭代器去循环一个变量的时候,如果循环的不是数组也不是字符串,本来是不能用for of循环的,但开启了这个选项,如果他是一个迭代器,则也可以用for of循环
+    "allowJs": true, // 是否允许在ts中与js代码进行交互,比如ts中导入了js文件
+    "skipLibCheck": true, // 是否跳过对声明文件的类型检查
+    "esModuleInterop": true, // 之前讲过的配置,让你可以用es6的方式进行默认导入
+    "allowSyntheticDefaultImports": true, // 上面的配置开启了,这个配置就会自动的开启
+    "strict": true, // 如果要对所有的东西都要严格检查一下,就把这个开启,那么下面那些带strict的就不用写了
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "forceConsistentCasingInFileNames": true, // 导入文件的时候是不是要区分大小写
+    "module": "esnext", // 模块化的结果是哪一套模块化的标准 这里使用最新的模块化标准,支持动态导入,就是在判断中进行动态导入
+    "moduleResolution": "node", // 模块解析使用node,这个都是用node
+    "resolveJsonModule": true, // 是否可以解析json文件
+    "isolatedModules": true, // 是不是把每一个文件当成一个模块,所以每个文件都的有个export
+    "noEmit": true, // 编译后不要生成js文件,在内存编译就好了,因为这个代码还要经过bable处理
+    "jsx": "react" // 解析jsx的方式, 三个值: preserve,写成啥样就编译成啥样,如果要生成文件的话,后缀名是jsx, react, jsx会被编译成一个js对象, react-native, 和preserve产生的结果一样,但是如果要生成文件的话文件后缀是.js
+  },
+  "include": [
+    "src"
+  ]
+}
