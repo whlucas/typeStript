@@ -41,7 +41,7 @@ class User5 {
     // 访问修饰符可以控制类中的某个成员的访问权限
     // public: 默认的访问修饰符,公开的,所有的代码均可访问
     // private: 私有的,只有在这个类中可以访问
-    // protect: 暂时没讲
+    // protect: 受保护的成员,只能在自身和子类中访问
 
     private publishNumber: number = 3;  // 每天一共可以发多少文章
     private curNumber: number = 0;  // 当前可以发布多少文章
