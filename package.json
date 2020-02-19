@@ -1,10 +1,11 @@
 {
   "name": "typestript",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
-    "create-react-app": "^3.3.1"
+    "create-react-app": "^3.3.1",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
     "@types/node": "^13.7.0"
@@ -23,5 +24,6 @@
   "bugs": {
     "url": "https://github.com/whlucas/typeStript/issues"
   },
-  "homepage": "https://github.com/whlucas/typeStript#readme"
+  "homepage": "https://github.com/whlucas/typeStript#readme",
+  "description": ""
 }
