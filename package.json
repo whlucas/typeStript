@@ -8,11 +8,16 @@
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
-    "@types/node": "^13.7.0"
+    "@types/node": "^13.7.0",
+    "axios": "^0.19.2",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.11.0",
+    "lodash": "^4.17.15",
+    "reflect-metadata": "^0.1.13"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -e ts --watch src --exec ts-node src/扑克牌/结束小练习扑克牌.ts",
+    "dev": "nodemon -e ts --watch src --exec ts-node src/9装饰器/6class-validator和class-transformer.ts",
     "build": "rd /s /q dist & tsc"
   },
   "repository": {

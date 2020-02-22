@@ -27,8 +27,8 @@ export class Deck {
         for (let m in Mark) {
             for (let c in Color) {
                 const card: NormalCard = {
-                    color: Color[c],
-                    mark: Mark[m],
+                    color: (Color as any)[c],
+                    mark: (Mark as any)[m],
                     getString() {
                         return this.color + this.mark
                     }
