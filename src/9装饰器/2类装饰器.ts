@@ -28,6 +28,32 @@ function test(target: new () => object) {
 // 这个new后面的()里面是构造函数里面的参数,这个里面的参数类型要和传进来的那个类的构造函数里面的参数所匹配
 // 但是如果你要这个装饰器的参数通用的话就像下面那么写
 function test1(target: new (...args: any[]) => object) {
+    // 获取所有的成员签名
+    const desc = Object.getOwnPropertyDescriptors(target.prototype)
+
+    for (const key of Object.keys(desc)){
+        if (key === 'constructor') {
+            continue;
+        }
+
+        const func = desc[key].value;
+
+        // 如果是函数操作一下
+        if('function' === typeof func){
+            Object.defineProperty(target.prototype, key, {
+                value(...args: any) {
+                    // 打印函数名
+                    console.log("before" + key)
+                    // 再执行一下
+                    const ret = func.apply(this, args)
+                    // 再打印函数名
+                    console.log("after" + key)
+
+                    return  ret
+                }
+            })
+        }
+    }
     
 }
 
@@ -38,6 +64,10 @@ class AAA {
         public name: string
     ) {
 
+    }
+
+    add(...nums: number[]) {
+        return nums.reduce((p, n) => (p + n), 0)
     }
 }
 

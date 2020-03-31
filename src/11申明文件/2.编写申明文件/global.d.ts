@@ -5,28 +5,29 @@
 // 我现在要声明console这个对象 
 // 申明文件是不能赋值的
 // 这里报错是因为人家写的对这个console的申明文件我没删
-declare var console: {
-    log(message?: any): void
-}
+
+// declare var console: {
+//     log(message?: any): void
+// }
 
 
-// 也可以这么写
-interface Console {
-    log(message?: any): void
-    error(message?: any): void
+// // 也可以这么写
+// interface Console {
+//     log(message?: any): void
+//     error(message?: any): void
     
-}
+// }
 
-declare var console: Console
+// declare var console: Console
 
 
-// 还有一种写法
-// 这个namespace表示命名空间,可以看成一个对象
-// 命名空间中的内容必须通过命名空间的名字.成员名来访问,
-declare namespace console {
-    function log(message ?: any): void
-    function error(message ?: any): void
-}
+// // 还有一种写法
+// // 这个namespace表示命名空间,可以看成一个对象
+// // 命名空间中的内容必须通过命名空间的名字.成员名来访问,
+// declare namespace console {
+//     function log(message ?: any): void
+//     function error(message ?: any): void
+// }
 
 
 // 再写一个全局的函数setTimeout,和setInterval

@@ -3,6 +3,7 @@
 // 属性装饰器也是一个函数, 该函数需要两个函数
 // 1. 如果是这个属性是静态属性,则要传类本身; 如果是实例属性,则要传类的原型(prototype)
 // 2. 固定为一个字符串,表示属性名
+// 3. 第三个是该类型成员的描述符
 
 type constructor1 = new (...args: any[]) => object
 
@@ -15,6 +16,7 @@ function decor1(target: any, key: string) {
         target.__props = []
     }
     target.__props.push(key)
+
 }
 
 function decor2(target: any, key: string) {
@@ -45,6 +47,9 @@ function decor4() {
         // 我把这个配置的这个给改了,那么这个方法在for in遍历的时候就可以被遍历到了
         // 那么我希望被遍历到的方法前面都可以加这个装饰器
         descriptor.enumerable = true
+
+        // 如果想让他只读
+        // descriptor.writable = false
     }
 }
 
@@ -55,6 +60,22 @@ function decor5() {
     return function (target: any, key: string, descriptor: PropertyDescriptor) {
         descriptor.value = function() {
             console.warn(key + "方法已过期")
+        }
+    }
+}
+
+// 检查参数
+function decor6() {
+    return function (target: any, key: string, descriptor: PropertyDescriptor) {
+        const func = descriptor.value;
+        descriptor.value = function(...args: any[]) {
+            for(let num of args) {
+                if('number' !== typeof num) {
+                    throw new Error(`"${num}" is not a number`)
+                }
+            }
+            // 如果都对了就执行原函数
+            return func.apply(this, args)
         }
     }
 }
